@@ -14,13 +14,15 @@ powered by **Google's hosted Gemma 4 model** through the official
 - **Mix and match** – submit text alone, an image alone, or an image plus text and context.
 - **Optional context** – describe what you were trying to do.
 - **Structured report** with seven sections: Summary, Observed Evidence,
-  Possible Causes, Debugging Steps, Suggested Fix, Missing Information, and a
+  Likely Cause, Suggested Fix, Edge Cases, Missing Information, and a
   ready-to-paste **GitHub issue draft**.
 - **Copy or download** the report as Markdown.
 
-The prompt is designed to be *evidence-first*: the model separates what it
-observes from what it assumes, avoids inventing code or line numbers, and asks
-for missing information when the input is insufficient.
+The prompt is designed to be *evidence-first*: the model attributes each observed
+fact to its source (screenshot vs. pasted text), separates confirmed facts from
+`unconfirmed` hypotheses, avoids inventing filenames, line numbers, or
+reproduction steps, and asks for the smallest missing detail when the input is
+insufficient.
 
 ## Stack
 
@@ -68,6 +70,17 @@ streamlit run app.py
 ```
 
 Streamlit opens the app in your browser (default: http://localhost:8501).
+
+## Running tests
+
+The regression tests run without an API key or network access (they use pure
+helpers and an injected fake client). `pytest` is a **development-only**
+dependency and is intentionally not in `requirements.txt`:
+
+```powershell
+pip install pytest
+pytest
+```
 
 ## Privacy & security
 
