@@ -73,13 +73,13 @@ Streamlit opens the app in your browser (default: http://localhost:8501).
 
 ## Running tests
 
-The regression tests run without an API key or network access (they use pure
-helpers and an injected fake client). `pytest` is a **development-only**
-dependency and is intentionally not in `requirements.txt`:
+## Running tests
 
-```powershell
-pip install pytest
-pytest
+The regression tests run without an API key or network access (they use pure helpers and an injected fake client). `pytest` is a **development-only** dependency and is intentionally not included in `requirements.txt`.
+
+```bash
+python -m pip install pytest
+python -m pytest test_app.py -v
 ```
 
 ## Privacy & security
